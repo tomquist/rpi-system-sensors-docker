@@ -1,0 +1,34 @@
+mqtt:
+  hostname: ${MQTT_HOST:=127.0.0.1}
+  port: ${MQTT_PORT:=1883} #defaults to 1883
+  user: ${MQTT_USER}
+  password: ${MQTT_PASSWORD}
+deviceName: ${DEVICE_NAME:=test}
+client_id: ${CLIENT_ID:=test}
+timezone: ${TIMEZONE:=Europe/Brussels}
+update_interval: ${UPDATE_INTERVAL:=60} #Defaults to 60
+sensors:
+  temperature: ${SENSORS_TEMPERATURE:=true}
+  clock_speed: ${SENSORS_CLOCK_SPEED:=true}
+  disk_use: ${SENSORS_DISK_USE:=true}
+  memory_use: ${SENSORS_MEMORY_USE:=true}
+  cpu_usage: ${SENSORS_CPU_USAGE:=true}
+  load_1m: ${SENSORS_LOAD1:=true}
+  load_5m: ${SENSORS_LOAD5:=true}
+  load_15m: ${SENSORS_LOAD15:=true}
+  net_tx: ${SENSORS_NET_TX:=true}
+  net_rx: ${SENSORS_NET_RX:=true}
+  swap_usage: ${SENSORS_SWAP_USAGE:=true}
+  power_status: ${SENSORS_POWER_STATUS:=true}
+  last_boot: ${SENSORS_LAST_BOOT:=true}
+  hostname: ${SENSORS_HOSTNAME:=true}
+  host_ip: ${SENSORS_HOST_IP:=true}
+  host_os: ${SENSORS_HOST_OS:=true}
+  host_arch: ${SENSORS_HOST_ARCH:=true}
+  last_message: ${SENSORS_LAST_MESSAGE:=true}
+  updates: ${SENSORS_UPDATES:=true}
+  wifi_strength: ${SENSORS_WIFI_STRENGTH:=true}
+  wifi_ssid: ${SENSORS_WIFI_SSID:=true}
+  external_drives:
+    # Only add mounted drives here, e.g.:
+    # Drive1: /media/storage
