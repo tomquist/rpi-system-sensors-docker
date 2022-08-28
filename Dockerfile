@@ -1,11 +1,11 @@
 FROM python:3.9-alpine as build
 
-RUN mkdir /app \
-  && wget -P /tmp/ "https://github.com/Sennevds/system_sensors/archive/refs/heads/master.tar.gz" \
+WORKDIR /app
+RUN wget -P /tmp/ "https://github.com/Sennevds/system_sensors/archive/refs/heads/master.tar.gz" \
   && tar -xvzf /tmp/master.tar.gz -C /app --strip-components 1 \
-  && /bin/ash -c 'set -ex && ARCH=`uname -m` && wget "https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-Linux-${ARCH/aarch64/arm64}" -O /app/envsubst' \
-  && apk --update-cache add --virtual build-dependencies build-base linux-headers \
-  && pip install -r /app/requirements.txt
+  && apk --update-cache add --virtual build-dependencies build-base linux-headers go
+RUN pip install -r /app/requirements.txt
+RUN GOBIN=/app go install github.com/a8m/envsubst/cmd/envsubst@v1.2.0
 
 FROM python:3.9-alpine
 RUN apk add bash wireless-tools
